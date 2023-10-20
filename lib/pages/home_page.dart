@@ -62,47 +62,69 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 20,
               ),
-              Container(
-                padding: EdgeInsets.all(10),
-                height: 200,
-                decoration: BoxDecoration(
-                    color: Color.fromRGBO(243, 174, 61, 1),
-                    borderRadius: BorderRadius.circular(12)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15.0, top: 30),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Započni",
-                            style: TextStyle(fontSize: 35, color: Colors.white),
-                          ),
-                          Text(
-                            "vježbu",
-                            style: TextStyle(fontSize: 35, color: Colors.white),
-                          ),
-                          Spacer(),
-                          Container(
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(12)),
-                            child: Center(
-                              child: Text(
-                                "Pokreni",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 15),
-                              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => OnlyHearingPage(),
+                      ));
+                },
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  height: 200,
+                  decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey[400]!
+                              .withOpacity(0.5), // Shadow color
+                          spreadRadius: 2, // Spread radius
+                          blurRadius: 5, // Blur radius
+                          offset:
+                              Offset(0, 3), // Offset in the x and y direction
+                        ),
+                      ],
+                      color: Color.fromRGBO(243, 174, 61, 1),
+                      borderRadius: BorderRadius.circular(12)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15.0, top: 30),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Započni",
+                              style:
+                                  TextStyle(fontSize: 35, color: Colors.white),
                             ),
-                          )
-                        ],
+                            Text(
+                              "vježbu",
+                              style:
+                                  TextStyle(fontSize: 35, color: Colors.white),
+                            ),
+                            Spacer(),
+                            Container(
+                              padding: EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(12)),
+                              child: Center(
+                                child: Text(
+                                  "Pokreni",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                    Lottie.asset("lib/assets/tigar_lebdi.json")
-                  ],
+                      Lottie.asset("lib/assets/tigar_lebdi.json")
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
@@ -124,12 +146,16 @@ class _HomePageState extends State<HomePage> {
                       },
                       child: ExerciseItem(
                           backgroundColor: Color.fromRGBO(252, 241, 224, 1),
-                          name: "Slušanje",
+                          name: "Učenje pod nadzorom",
                           imagePath: "lib/assets/speaker.png"),
                     ),
                     ExerciseItem(
                         backgroundColor: Color.fromRGBO(233, 243, 254, 1),
-                        name: "Pričanje",
+                        name: "Samostalno učenje",
+                        imagePath: "lib/assets/microphone1.png"),
+                    ExerciseItem(
+                        backgroundColor: Color.fromRGBO(233, 243, 254, 1),
+                        name: "Samostalno učenje",
                         imagePath: "lib/assets/microphone1.png")
 
                     // Add more items as needed
@@ -152,9 +178,16 @@ class _HomePageState extends State<HomePage> {
                   )
                 ],
               ),
-              Course(),
-              Course(),
-              Course(),
+              Course(
+                title: "Nauči razlikovati afrikate",
+                subtitle: "Trajanje 20 minuta",
+                imagePath: "lib/assets/letter.png",
+              ),
+              Course(
+                title: "Jednostavna matematika",
+                subtitle: "Trajanje 10 minuta",
+                imagePath: "lib/assets/calculator.png",
+              ),
             ]),
           ),
         ),

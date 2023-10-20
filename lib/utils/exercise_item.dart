@@ -20,12 +20,12 @@ class ExerciseItem extends StatelessWidget {
         decoration: BoxDecoration(
             color: backgroundColor, borderRadius: BorderRadius.circular(12)),
         height: 90,
-        width: 90,
+        width: 160,
         child: Center(
           child: Column(
             children: [
               Container(height: 50, child: Image.asset(imagePath)),
-              Text(name),
+              Text(name, style: TextStyle(fontWeight: FontWeight.bold),),
             ],
           ),
         ),
