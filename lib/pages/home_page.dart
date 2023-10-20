@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:linglav/pages/only_hearing_page.dart';
 import 'package:linglav/utils/course.dart';
 import 'package:linglav/utils/exercise_item.dart';
 import 'package:linglav/utils/testing.dart';
@@ -113,12 +114,21 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   children: <Widget>[
                     // Add your list items here
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => OnlyHearingPage(),
+                            ));
+                      },
+                      child: ExerciseItem(
+                          backgroundColor: Color.fromRGBO(252, 241, 224, 1),
+                          name: "Slušanje",
+                          imagePath: "lib/assets/speaker.png"),
+                    ),
                     ExerciseItem(
-                        backgroundColor: Color.fromRGBO(252, 241, 224, 1),
-                        name: "Slušanje",
-                        imagePath: "lib/assets/speaker.png"),
-                    ExerciseItem(
-                        backgroundColor: Color.fromRGBO(233,243,254, 1),
+                        backgroundColor: Color.fromRGBO(233, 243, 254, 1),
                         name: "Pričanje",
                         imagePath: "lib/assets/microphone1.png")
 

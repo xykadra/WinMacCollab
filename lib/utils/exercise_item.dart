@@ -4,6 +4,7 @@ class ExerciseItem extends StatelessWidget {
   final Color backgroundColor;
   final String name;
   final String imagePath;
+
   const ExerciseItem({
     required this.backgroundColor,
     required this.name,
@@ -23,9 +24,7 @@ class ExerciseItem extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              Container(
-                height: 50,
-                child: Image.asset(imagePath)),
+              Container(height: 50, child: Image.asset(imagePath)),
               Text(name),
             ],
           ),
