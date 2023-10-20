@@ -23,9 +23,10 @@ class _bottomNavigationBarState extends State<bottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       extendBody: true,
       bottomNavigationBar: DotNavigationBar(
-        backgroundColor: Color.fromRGBO(254,248,233,1),
+        backgroundColor: Color.fromRGBO(245,193,68,1),
         currentIndex: selectedIndex,
         onTap: _navigateBottomBar,
         dotIndicatorColor: Colors.black,
@@ -42,11 +43,11 @@ class _bottomNavigationBarState extends State<bottomNavigationBar> {
             selectedColor: Colors.pink,
           ),
 
-          /// Search
-          DotNavigationBarItem(
-            icon: Icon(Icons.search),
-            selectedColor: Colors.orange,
-          ),
+          // /// Search
+          // DotNavigationBarItem(
+          //   icon: Icon(Icons.search),
+          //   selectedColor: Colors.orange,
+          // ),
 
           /// Profile
           DotNavigationBarItem(

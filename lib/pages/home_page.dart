@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:linglav/utils/course.dart';
 import 'package:linglav/utils/exercise_item.dart';
+import 'package:linglav/utils/testing.dart';
 import 'package:lottie/lottie.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 
@@ -13,19 +16,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        
         body: Container(
           color: Colors.white,
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Column(children: [
+            child: ListView(scrollDirection: Axis.vertical, children: [
               SizedBox(
                 height: 20,
               ),
@@ -104,25 +105,29 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: 15,
               ),
               Container(
-                height: 90,
+                height: 120,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: <Widget>[
                     // Add your list items here
-                    ExerciseItem(),
-                    ExerciseItem(),
-                    ExerciseItem(),
-                    ExerciseItem(),
+                    ExerciseItem(
+                        backgroundColor: Color.fromRGBO(252, 241, 224, 1),
+                        name: "Slušanje",
+                        imagePath: "lib/assets/speaker.png"),
+                    ExerciseItem(
+                        backgroundColor: Color.fromRGBO(233,243,254, 1),
+                        name: "Pričanje",
+                        imagePath: "lib/assets/microphone1.png")
 
                     // Add more items as needed
                   ],
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -136,7 +141,10 @@ class _HomePageState extends State<HomePage> {
                     style: TextStyle(color: Colors.grey, fontSize: 16),
                   )
                 ],
-              )
+              ),
+              Course(),
+              Course(),
+              Course(),
             ]),
           ),
         ),

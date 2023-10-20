@@ -1,27 +1,34 @@
 import 'package:flutter/material.dart';
 
 class ExerciseItem extends StatelessWidget {
-  // final Color backgroundColor;
-  // final String name;
-  // final Image image;
+  final Color backgroundColor;
+  final String name;
+  final String imagePath;
   const ExerciseItem({
-    super.key,
-    // required this.backgroundColor,
-    // required this.name,
-    // required this.image,
+    required this.backgroundColor,
+    required this.name,
+    required this.imagePath,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
       child: Container(
+        padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
-            color: Colors.blue, borderRadius: BorderRadius.circular(12)),
+            color: backgroundColor, borderRadius: BorderRadius.circular(12)),
         height: 90,
         width: 90,
         child: Center(
-          child: Text("HELLo"),
+          child: Column(
+            children: [
+              Container(
+                height: 50,
+                child: Image.asset(imagePath)),
+              Text(name),
+            ],
+          ),
         ),
       ),
     );
