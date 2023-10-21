@@ -1,4 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:linglav/pages/bottom_nav_bar.dart';
@@ -6,14 +7,14 @@ import 'package:linglav/pages/home_page.dart';
 import 'package:lottie/lottie.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-class OnlyHearingPage extends StatefulWidget {
-  const OnlyHearingPage({super.key});
+class AloneLearning extends StatefulWidget {
+  const AloneLearning({super.key});
 
   @override
-  State<OnlyHearingPage> createState() => _OnlyHearingPageState();
+  State<AloneLearning> createState() => _AloneLearningState();
 }
 
-class _OnlyHearingPageState extends State<OnlyHearingPage> {
+class _AloneLearningState extends State<AloneLearning> {
   AudioPlayer audioPlayer = AudioPlayer();
 
   double progressBarProgression = 0.0;
@@ -90,6 +91,28 @@ class _OnlyHearingPageState extends State<OnlyHearingPage> {
     });
   }
 
+  bool isRecording = false;
+
+  void _handlingOfEmptyFields(String message) {
+    final snackBar = SnackBar(
+      /// need to set following properties for best effect of awesome_snackbar_content
+      elevation: 0,
+      behavior: SnackBarBehavior.floating,
+      backgroundColor: Colors.transparent,
+      content: AwesomeSnackbarContent(
+        title: "Bravo",
+        message: message,
+
+        /// change contentType to ContentType.success, ContentType.warning or ContentType.help for variants
+        contentType: ContentType.success,
+      ),
+    );
+
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(snackBar);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -140,12 +163,12 @@ class _OnlyHearingPageState extends State<OnlyHearingPage> {
                 padding: EdgeInsets.all(8),
                 height: MediaQuery.of(context).size.height / 2,
                 decoration: BoxDecoration(
-                  color: Colors.grey,
+                  color: !isRecording ? Colors.grey : Colors.green,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
+                      color: Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Image.asset(images[currentImageIndex])),
@@ -163,11 +186,6 @@ class _OnlyHearingPageState extends State<OnlyHearingPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Container(
-                    height: 60,
-                    width: 60,
-                    child: Image.asset("lib/assets/incorrect.png"),
-                  ),
                   GestureDetector(
                     onTap: () {
                       playSound();
@@ -181,10 +199,22 @@ class _OnlyHearingPageState extends State<OnlyHearingPage> {
                   GestureDetector(
                     onTap: () {
                       if (progressBarProgression < 0.8) {
-                        incrementProgressBar();
-                        showNextImage();
-                        showNextName();
-                        incrementSoundNumber();
+                        if (isRecording) {
+                          setState(() {
+                            isRecording = !isRecording;
+
+                            _handlingOfEmptyFields("Odgovor je tačan!");
+                            incrementProgressBar();
+                            showNextImage();
+                            showNextName();
+                            incrementSoundNumber();
+                            print("heello");
+                          });
+                        } else {
+                          setState(() {
+                            isRecording = !isRecording;
+                          });
+                        }
                       } else {
                         incrementProgressBar();
 
@@ -232,7 +262,7 @@ class _OnlyHearingPageState extends State<OnlyHearingPage> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) =>
-                                                          OnlyHearingPage(),
+                                                          AloneLearning(),
                                                     ));
                                               },
                                               child: Container(
@@ -280,10 +310,11 @@ class _OnlyHearingPageState extends State<OnlyHearingPage> {
                       }
                     },
                     child: Container(
-                      height: 60,
-                      width: 60,
-                      child: Image.asset("lib/assets/correct2.png"),
-                    ),
+                        height: 60,
+                        width: 60,
+                        child: !isRecording
+                            ? Image.asset("lib/assets/microphone4.png")
+                            : Image.asset("lib/assets/incorrect.png")),
                   )
                 ],
               ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:linglav/pages/alone_learnign.dart';
 import 'package:linglav/pages/only_hearing_page.dart';
 import 'package:linglav/utils/course.dart';
 import 'package:linglav/utils/exercise_item.dart';
@@ -56,6 +57,7 @@ class _HomePageState extends State<HomePage> {
                     decoration: BoxDecoration(
                         color: Color.fromRGBO(211, 212, 24, 1),
                         borderRadius: BorderRadius.circular(12)),
+                    child: Icon(Icons.notifications),
                   )
                 ],
               ),
@@ -149,14 +151,23 @@ class _HomePageState extends State<HomePage> {
                           name: "Učenje pod nadzorom",
                           imagePath: "lib/assets/speaker.png"),
                     ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AloneLearning(),
+                            ));
+                      },
+                      child: ExerciseItem(
+                          backgroundColor: Color.fromRGBO(180, 215, 253, 1),
+                          name: "Samostalno učenje",
+                          imagePath: "lib/assets/microphone1.png"),
+                    ),
                     ExerciseItem(
-                        backgroundColor: Color.fromRGBO(233, 243, 254, 1),
-                        name: "Samostalno učenje",
-                        imagePath: "lib/assets/microphone1.png"),
-                    ExerciseItem(
-                        backgroundColor: Color.fromRGBO(233, 243, 254, 1),
-                        name: "Samostalno učenje",
-                        imagePath: "lib/assets/microphone1.png")
+                        backgroundColor: Color.fromRGBO(141,124,247, 1),
+                        name: "Mini igrice",
+                        imagePath: "lib/assets/miniGames.png")
 
                     // Add more items as needed
                   ],

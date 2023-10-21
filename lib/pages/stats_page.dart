@@ -30,6 +30,9 @@ class _StatsPageState extends State<StatsPage> {
                     ),
                   ],
                 ),
+                SizedBox(
+                  height: 10,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
@@ -75,7 +78,9 @@ class _StatsPageState extends State<StatsPage> {
                     ),
                   ),
                 ),
-                Spacer(),
+                SizedBox(
+                  height: 10,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
@@ -113,7 +118,7 @@ class _StatsPageState extends State<StatsPage> {
                               top: 8,
                               left: 30,
                               child: Text(
-                                "23/40",
+                                "120/150",
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ))
                         ]),
@@ -121,8 +126,9 @@ class _StatsPageState extends State<StatsPage> {
                     ),
                   ),
                 ),
-
-                Spacer(),
+                SizedBox(
+                  height: 15,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -162,7 +168,7 @@ class _StatsPageState extends State<StatsPage> {
                     ],
                   ),
                 ),
-                //Spacer()
+                Spacer()
               ],
             ),
           ),

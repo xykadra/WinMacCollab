@@ -20,7 +20,7 @@ class ExerciseItem extends StatelessWidget {
         decoration: BoxDecoration(
             color: backgroundColor, borderRadius: BorderRadius.circular(12)),
         height: 90,
-        width: 160,
+        width: 165,
         child: Center(
           child: Column(
             children: [

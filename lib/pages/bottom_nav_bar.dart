@@ -1,6 +1,7 @@
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:linglav/pages/stats_page.dart';
+import 'package:linglav/pages/thank_you.dart';
 
 import 'home_page.dart';
 
@@ -20,7 +21,7 @@ class _bottomNavigationBarState extends State<bottomNavigationBar> {
     });
   }
 
-  final List<Widget> _pages = [HomePage(), HomePage(), StatsPage()];
+  final List<Widget> _pages = [HomePage(), ThankYouPage(), StatsPage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
